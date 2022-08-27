@@ -123,9 +123,7 @@ namespace SerialTemplate
                 WriteSerialCommand("3", DeviceState.StateOff);
             }
         }
-
-
-        
+      
         /// <summary>
         /// Writes a custom command to the device to turn LEDs on/off
         /// using a DataWriter to the OutputStream
@@ -394,7 +392,6 @@ namespace SerialTemplate
                     }
                 }));
         }
-
 
         /// <summary>
         /// Notifies the UI that the operation has been cancelled

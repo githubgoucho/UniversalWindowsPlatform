@@ -61,6 +61,7 @@ namespace SerialTemplate
 
         }
 
+
         /// <summary>
         /// Invoked when this page is about to be displayed in a Frame.
         /// 
@@ -82,7 +83,7 @@ namespace SerialTemplate
                 MainPage.Current.NotifyUser("Connected to " + EventHandlerForDevice.Current.DeviceInformation.Name,
                                             NotifyType.StatusMessage);
                 ResetWriteCancellationTokenSource();
-            FirmwareListSource.Source = listOfDevices;
+                FirmwareListSource.Source = listOfDevices;
             }
         }
 
@@ -122,31 +123,10 @@ namespace SerialTemplate
         }
 
         /// <summary>
-        /// Selects the item in the UI's listbox that corresponds to the provided device id. If there are no
-        /// matches, we will deselect anything that is selected.
-        /// </summary>
-        /// <param name="deviceIdToSelect">The device id of the device to select on the list box</param>
-        private void SelectDeviceInList(String deviceIdToSelect)
-        {
-            // Don't select anything by default.
-            UploadFirmwareViewer.SelectedIndex = -1;
-            List<String> firmware = new List<String>() { "blink", "MotorControl", "Camera" };
-            for (int deviceListIndex = 0; deviceListIndex < firmware.Count; deviceListIndex++)
-            {
-                if (listOfDevices[deviceListIndex] == deviceIdToSelect)
-                {
-                    UploadFirmwareViewer.SelectedIndex = deviceListIndex;
-
-                    break;
-                }
-            }
-        }
-
-        /// <summary>
         /// Write to the output stream using a task 
         /// </summary>
         /// <param name="cancellationToken"></param>
-        private async Task WriteAsync(CancellationToken cancellationToken)
+        private async Task WriteAsync(CancellationToken cancellationToken, String send)
         {
             Task<UInt32> storeAsyncTask;
 
@@ -161,7 +141,7 @@ namespace SerialTemplate
             }
 
             UInt32 bytesWritten = await storeAsyncTask;
-            rootPage.NotifyUser("Write completed - " + bytesWritten.ToString() + " bytes written", NotifyType.StatusMessage);
+            rootPage.NotifyUser(send + " write completed - " + bytesWritten.ToString() + " bytes written", NotifyType.StatusMessage);
         }
 
         private async void UploadFirmware_Click(Object sender, RoutedEventArgs eventArgs)
@@ -174,7 +154,7 @@ namespace SerialTemplate
                 {
                     DataWriterObject = new DataWriter(EventHandlerForDevice.Current.Device.OutputStream);
                     DataWriterObject.WriteString(entry);
-                    await WriteAsync(WriteCancellationTokenSource.Token);
+                    await WriteAsync(WriteCancellationTokenSource.Token, entry);
                 }
 
         }
@@ -188,6 +168,7 @@ namespace SerialTemplate
 
         // Track Write Operation
         private CancellationTokenSource WriteCancellationTokenSource;
+ 
         private Object WriteCancelLock = new Object();
 
         DataWriter DataWriterObject = null;
@@ -212,7 +193,6 @@ namespace SerialTemplate
             }
         }
 
-
         private void ResetWriteCancellationTokenSource()
         {
             // Create a new cancellation token source so that can cancel all the tokens again
@@ -221,7 +201,6 @@ namespace SerialTemplate
             // Hook the cancellation callback (called whenever Task.cancel is called)
             WriteCancellationTokenSource.Token.Register(() => NotifyWriteCancelingTask());
         }
-
 
         private async void NotifyWriteTaskCanceled()
         {

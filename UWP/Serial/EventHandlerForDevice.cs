@@ -218,8 +218,7 @@ namespace SerialTemplate
             }
             else
             {
-
-            device = await SerialDevice.FromIdAsync(deviceInfo.Id);
+                device = await SerialDevice.FromIdAsync(deviceInfo.Id);
             }
 
             Boolean successfullyOpenedDevice = false;
