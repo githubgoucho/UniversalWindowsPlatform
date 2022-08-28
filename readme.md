@@ -3,7 +3,7 @@
 
 ## General Info
 ***
-WConnect an IoT Esp32 using ComPort, USB or Bluetooth device enumeration and selection.
+Connect an IoT Esp32 using ComPort, USB or Bluetooth device enumeration and selection.
 ### Screenshots
 * UWP device selection page
 ![Device List](/UWP/Serial-Esp32/Assets/device.jpg)  
