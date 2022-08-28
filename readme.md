@@ -1,7 +1,7 @@
 
 # UWP Experiments
 
-## General Info
+## Esp32 Console
 ***
 Connect an IoT Esp32 using ComPort, USB or Bluetooth device enumeration and selection.
 ### Screenshots
