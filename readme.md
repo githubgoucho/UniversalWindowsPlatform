@@ -1,8 +1,8 @@
 
 # UWP Experiments
-*
-*
-* connect Esp32 serial device RS232, USB or Bluetooth
+!connect an IoT Esp32 serial device 
+!using ComPort, USB or Bluetooth device enumeration and selection
+* 
 ![Device List](/UWP/Serial-Esp32/Assets/device.jpg)  
 * esp32 control panel
 ![Device Control](/UWP/Serial-Esp32/Assets/control.jpg) 
