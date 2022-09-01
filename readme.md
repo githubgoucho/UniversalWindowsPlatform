@@ -3,6 +3,10 @@
 
 ## Esp32 Console
 Connect an IoT Esp32 using ComPort, USB or Bluetooth device enumeration and selection.
+### Technologies
+UWP
+C# 10
+.Net 6
 ### Screenshots
 #### UWP device selection page
 ![Device List](/UWP/Serial-Esp32/Assets/device.jpg)  
