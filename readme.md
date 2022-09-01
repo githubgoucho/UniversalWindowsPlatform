@@ -4,7 +4,7 @@
 ## Esp32 Console
 Connecting an Esp32 using ComPort, USB or Bluetooth
 ### Technologies
-*
+**
 * UWP
 * XAML
 * C# 10
