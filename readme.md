@@ -6,9 +6,10 @@ Connecting an Esp32 using ComPort, USB or Bluetooth
 ### Technologies
 ***
 * UWP
+* XAML
 * C# 10
 * .Net 6
-* Device enumeration, selection, connect
+* Device enumeration, selection & connection
 * Device select
 * IoT
 ### Screenshots
